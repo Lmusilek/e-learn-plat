@@ -7,11 +7,63 @@
     %button.btn.btn-primary.btn-sm{:type => "submit"}
       %span.fa.fa-search{"aria-hidden" => "true"}
 
+.card-group
+  .card.card-body
+    %h1
+      .fa.fa-graduation-cap
+    = Course.count
+    online courses
+    .row
+    Explore a variety of fresh topics
+  .card.card-body
+    %h1
+      .fa.fa-chalkboard-teacher
+      /.fa.fa-brain
+    = Course.distinct.count(:user_id)
+    expert instructors
+    .row
+    Find the right instructor for you
+  .card.card-body
+    %h1
+      .fa.fa-user-graduate
+    = User.count
+    active learners
+    .row
+    Join the knowledge sharing community
+  .card.card-body
+    %h1
+      .fa.fa-infinity
+    Lifetime access
+    .row
+    Learn on your schedule
+
+%hr
+%h2
+  Popular courses
+.row
+  - @courses.each do |course|
+    .col-md-4
+      = render 'courses/course', course: course
+
+%hr
+%h2 
+  Top rated courses
+.row
+  - @courses.each do |course|
+    .col-md-4
+      = render 'courses/course', course: course
+
+%hr
+%h2 
+  Latest courses
+.row
+  - @latest_courses.each do |course|
+    .col-md-4
+      = render 'courses/course', course: course
+
+%hr
+
 = link_to privacy_policy_path, class: 'btn btn-success' do
   .fa.fa-book
   Privacy policy
-  
-= link_to courses_path, class: 'btn btn-success' do
-  .fa.fa-book
-  Courses
 
