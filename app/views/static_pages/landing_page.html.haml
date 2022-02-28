@@ -1,5 +1,12 @@
-%h1 StaticPages#landing_page
-%p Find me in app/views/static_pages/landing_page.html.erb
+.bg-light.p-5.rounded-lg
+  %p.lead.display-4 What would you like to learn today?
+  %hr.my-4/
+  %p Search from hudndreds of courses and find the one you like.
+  = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Search", class: 'form-control-sm'
+  %span.input-group-append
+    %button.btn.btn-primary.btn-sm{:type => "submit"}
+      %span.fa.fa-search{"aria-hidden" => "true"}
+
 = link_to privacy_policy_path, class: 'btn btn-success' do
   .fa.fa-book
   Privacy policy
