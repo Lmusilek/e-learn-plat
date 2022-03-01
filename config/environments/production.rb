@@ -1,7 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.action_mailer.default_url_options = { :host => 'e-learn-plat.herokuapp.com', :protocol => 'https' }
+  # config.action_mailer.default_url_options = { :host => 'e-learn-plat.herokuapp.com', :protocol => 'https' }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
