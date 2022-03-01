@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  devise_for :users, controllers: { registrations: "registrations" }
+  devise_for :users
   resources :courses
   resources :users, only: [:index]
   root 'static_pages#landing_page'
