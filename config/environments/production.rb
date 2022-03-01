@@ -1,11 +1,22 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.action_mailer.default_url_options = {:host => "localhost:3000"}
+  config.action_mailer.default_url_options = {host: "e-learn-plat.herokuapp.com", protocol: "https"}
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
   # Settings specified here will take precedence over those in config/application.rb.
-  config.action_mailer.perform_deliveries = false
   # Code is not reloaded between requests.
   config.cache_classes = true
+
+  config.action_mailer.smtp_settings = {
+    port: 587,
+    address: 'email-smtp.eu-central-1.amazonaws.com',
+    user_name: 'AKIAXXCESEG6SFDQPZXB',
+    password: 'BKK9607nb5GEjPb5JOkxLg2RULXHrXUc9vQUjqB4/zOp',
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
