@@ -31,6 +31,7 @@ gem 'faker'
 gem 'devise'
 gem 'friendly_id', '~> 5.2.4'
 gem 'better_errors'
+gem 'ransack'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

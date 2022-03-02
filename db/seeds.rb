@@ -5,14 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.destroy_all
+
 Course.destroy_all
+User.destroy_all
 
 User.create!(email: 'admin@example.com', password: 'admin@example.com', password_confirmation: 'admin@example.com')
+# languages = [ "English", "Czech", "Russian"]
+levels = [ "Beginner", "Intermediate","Advanced"]
 
 30.times do
   Course.create!([{
     title: Faker::Educator.course_name,
+    language: Faker::Nation.language,
+    price: rand(20..55),
+    level: levels.sample,
+    short_description: Faker::Quote.robin,
     description: Faker::TvShows::GameOfThrones.quote,
     user_id: User.first.id
   }])

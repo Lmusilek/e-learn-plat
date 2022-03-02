@@ -1,3 +1,13 @@
+.form-inline
+  = search_form_for @q do |f|
+    = f.search_field :email_cont, placeholder: 'email'
+    = f.search_field :sign_in_count_eq, placeholder: 'sing in count'
+    = f.search_field :email_or_sign_in_count_eq, placeholder: 'email or sign in count'
+    = f.submit
+  .ml-2
+    .fa.fa-sync
+    = link_to 'refresh', users_path
+
 .card-columns
-  - @users.each do |user|
-    = render 'users/user', user: user 
+  = render 'users/user'
+    
