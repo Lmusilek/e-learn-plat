@@ -1,7 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.action_mailer.default_url_options = {host: "heroku.com", protocol: "https"}
+  config.action_mailer.default_url_options = {host: "e-learn-plat.herokuapp.com", protocol: "https"}
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
@@ -9,7 +9,7 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
-  config.action_mailer.smtp_settings = {
+  config.action_mailer.smtp_settings = {Corsego <hello@corsego.com>
     port: 587,
     address: 'email-smtp.eu-central-1.amazonaws.com',
     user_name: 'AKIAXXCESEG6SFDQPZXB',
