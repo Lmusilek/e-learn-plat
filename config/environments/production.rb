@@ -9,7 +9,7 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
-  config.action_mailer.smtp_settings = {Corsego <hello@corsego.com>
+  config.action_mailer.smtp_settings = {
     port: 587,
     address: 'email-smtp.eu-central-1.amazonaws.com',
     user_name: 'AKIAXXCESEG6SFDQPZXB',
