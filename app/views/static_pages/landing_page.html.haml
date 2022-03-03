@@ -2,11 +2,14 @@
 .bg-light.p-5.rounded-lg
   %p.lead.display-4 What would you like to learn today?
   %hr.my-4/
-  %p Search from hudndreds of courses and find the one you like.
-  = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Search", class: 'form-control-sm'
-  %span.input-group-append
-    %button.btn.btn-primary.btn-sm{:type => "submit"}
-      %span.fa.fa-search{"aria-hidden" => "true"}
+  %p Search from hudndreds of courses and find the one you like
+  - if current_user
+    = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
+      .input-group
+        = f.search_field :title_cont, class: 'form-control-sm', style: 'float: left; width: 150px; ', placeholder: 'Find a course', :autocomplete => :off
+        %span.input-group-append
+          %button.btn.btn-primary.btn{:type => "submit"}
+            %span.fa.fa-search{"aria-hidden" => "true"}
 
 .card-group
   .card.card-body
@@ -43,24 +46,21 @@
   Popular courses
 .row
   - @courses.each do |course|
-    .col-md-4
-      = render 'courses/course', course: course
+    = render 'courses/course', course: course
 
 %hr
 %h2 
   Top rated courses
 .row
   - @courses.each do |course|
-    .col-md-4
-      = render 'courses/course', course: course
+    = render 'courses/course', course: course
 
 %hr
 %h2 
   Latest courses
 .row
   - @latest_courses.each do |course|
-    .col-md-4
-      = render 'courses/course', course: course
+    = render 'courses/course', course: course
 
 %hr
 
