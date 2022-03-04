@@ -3,7 +3,7 @@
   %p.lead.display-4 What would you like to learn today?
   %hr.my-4/
   %p Search from hudndreds of courses and find the one you like
-  - if current_user
+  - if current_user && current_user.has_role?(:admin)
     = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
       .input-group
         = f.search_field :title_cont, class: 'form-control-sm', style: 'float: left; width: 150px; ', placeholder: 'Find a course', :autocomplete => :off
