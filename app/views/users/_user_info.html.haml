@@ -25,17 +25,23 @@
   %thead
     %tr
       %th= 'confirmed_email'.humanize
+      %th= 'online status'.humanize
       %th= 'role'.humanize
     - if policy(current_user).edit?
       %th
         = 'edit roles'.humanize   
-  
   %tbody
     %tr
       - if user.confirmed_at.present?
         %td= 'Yes'
       - else
         %td= 'No'
+      - if user.online?
+        %td
+          %i.text-success.fa.fa-circle
+      - else
+        %td
+          %i.fa.fa-circle
         %td
           - user.roles.each do |role|
             .badge.bg-info
@@ -44,3 +50,8 @@
       - if policy(user).edit?
         %td
           = link_to 'Edit roles', edit_user_path(user), class: 'btn btn-sm btn-warning'
+
+      // - if user.online?
+      //   .text-success.fa.fa-circle
+      // - else
+      //   .fa.fa-circle
