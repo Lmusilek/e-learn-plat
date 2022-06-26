@@ -21,6 +21,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
+    authorize @course
     if current_user.has_role?(:admin ) || current_user.has_role?(:teacher )
       @course = Course.new
     else
@@ -36,6 +37,7 @@ class CoursesController < ApplicationController
   # POST /courses or /courses.json
   def create
     @course = Course.new(course_params)
+    authorize @course
     @course.user = current_user
 
     respond_to do |format|
@@ -51,6 +53,7 @@ class CoursesController < ApplicationController
 
   # PATCH/PUT /courses/1 or /courses/1.json
   def update
+    authorize @course
     respond_to do |format|
       if @course.update(course_params)
         format.html { redirect_to course_url(@course), notice: "Course was successfully updated." }
@@ -63,8 +66,8 @@ class CoursesController < ApplicationController
   end
 
   def destroy
+    authorize @course
     @course.destroy
-
     respond_to do |format|
       format.html { redirect_to courses_url, notice: "Course was successfully destroyed." }
       format.json { head :no_content }
