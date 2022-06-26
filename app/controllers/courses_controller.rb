@@ -22,9 +22,9 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
-    authorize @course
     if current_user.has_role?(:admin ) || current_user.has_role?(:teacher )
       @course = Course.new
+      # authorize @course
     else
       redirect_to root_path, alert: "You don't have access"
     end
@@ -32,13 +32,13 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
-    authorize @course
+    # authorize @course
   end
 
   # POST /courses or /courses.json
   def create
     @course = Course.new(course_params)
-    authorize @course
+    # authorize @course
     @course.user = current_user
 
     respond_to do |format|

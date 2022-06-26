@@ -9,7 +9,7 @@ class CoursePolicy < ApplicationPolicy
       @user.has_role?(:admin) || @record.user == @user
     end
     
-     def update?
+    def update?
       @user.has_role?(:admin) || @record.user == @user
     end
     

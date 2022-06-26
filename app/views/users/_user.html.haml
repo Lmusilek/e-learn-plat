@@ -10,9 +10,8 @@
       %th= 'current_sign_in_ip'.humanize
       %th= 'last_sign_in_ip'.humanize
       %th= 'role'.humanize
-    - if policy(current_user).edit?
-      %th
-        = 'edit roles'.humanize
+      %th= 'edit roles'.humanize
+    // - if policy(current_user).edit?
   %tbody
   - @users.each do |user|
     %tr
@@ -29,11 +28,12 @@
       %td= user.last_sign_in_at
       %td= user.current_sign_in_ip
       %td= user.last_sign_in_ip
+    - if policy(user).edit?
       %td
         - user.roles.each do |role|
           .badge.bg-info
             = role.name
       
-    - if policy(user).edit?
+    - if policy(current_user).edit?
       %td
         = link_to 'Edit roles', edit_user_path(user), class: 'btn btn-sm btn-warning'
