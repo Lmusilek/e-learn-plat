@@ -6,6 +6,9 @@
     .card-body
       %small= simple_format(course.short_description)
     .card-footer
+      .fa.fa-book
+        = course.lessons.count
+    .card-footer
       .text-center
         .fa.fa-money-bill
         = number_to_currency(course.price)
