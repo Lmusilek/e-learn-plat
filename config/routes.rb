@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   
   resources :lessons
   devise_for :users
-  resources :courses
+  resources :courses do
+    resources :lesson
+  end
   resources :users, only: [:index, :show, :edit, :update]
   root 'static_pages#landing_page'
   get 'landing_page', to: 'static_pages#landing_page'
