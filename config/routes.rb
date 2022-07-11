@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :lessons
   devise_for :users
   resources :courses do
-    resources :lesson
+    resources :lessons
   end
   resources :users, only: [:index, :show, :edit, :update]
   root 'static_pages#landing_page'

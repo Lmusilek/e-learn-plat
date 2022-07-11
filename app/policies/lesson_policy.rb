@@ -10,11 +10,11 @@ class LessonPolicy < ApplicationPolicy
     end
     
     def edit?
-      @record.course.user == @user
+      @record.course.user_id == @user.id
     end
     
     def update?
-      @record.course.user == @user
+      @record.course.user_id == @user.id
     end
     
     def new?
@@ -22,7 +22,7 @@ class LessonPolicy < ApplicationPolicy
     end
     
     def create?
-      # @user.has_role?(:teacher)
+      @record.course.user_id == @user.id
     end
     
     def destroy?
