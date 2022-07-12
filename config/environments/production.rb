@@ -7,6 +7,13 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   # Settings specified here will take precedence over those in config/application.rb.
   # Code is not reloaded between requests.
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+  email: {
+    email_prefix: '[PREFIX] ',
+    sender_address: %{"E-learn error" <support@elearnplat.com>},
+    exception_recipients: %w{lukas.musilek@gmail.com}
+  }
+  
   config.cache_classes = true
 
   config.action_mailer.smtp_settings = {
