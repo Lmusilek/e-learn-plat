@@ -4,7 +4,8 @@ class LessonPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
-    
+  end
+  
     def show?
       @user.has_role?(:admin) || @record.course.user == @user
     end
@@ -28,5 +29,4 @@ class LessonPolicy < ApplicationPolicy
     def destroy?
       @record.course.user == @user
     end
-  end
 end

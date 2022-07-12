@@ -24,7 +24,7 @@ class CoursesController < ApplicationController
   def new
     if current_user.has_role?(:admin ) || current_user.has_role?(:teacher )
       @course = Course.new
-      # authorize @course
+      authorize @course
     else
       redirect_to root_path, alert: "You don't have access"
     end
