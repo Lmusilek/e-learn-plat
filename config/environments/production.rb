@@ -10,7 +10,7 @@ Rails.application.configure do
   Rails.application.config.middleware.use ExceptionNotification::Rack,
   email: {
     email_prefix: '[PREFIX] ',
-    sender_address: %{"E-learn error" <support@elearnplat.com>},
+    sender_address: %{"E-learn error" <lukas.musilek@gmail.com>},
     exception_recipients: %w{lukas.musilek@gmail.com}
   }
   
