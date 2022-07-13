@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
   
   include PublicActivity::StoreController
   
+  include Pagy::Backend
+  
   after_action :user_activity
   
   before_action :set_global_variables, if: :user_signed_in?

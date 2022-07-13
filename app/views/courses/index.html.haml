@@ -31,6 +31,7 @@
       - @courses.each do |course|
         = render 'courses/course', course: course
     %p
+    != pagy_bootstrap_nav(@pagy)
 
 %br
 

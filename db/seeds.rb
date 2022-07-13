@@ -5,12 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# PublicActivity.enabled = false
 
+Lesson.destroy_all
 Course.destroy_all
 User.destroy_all
 
 # User.create!(email: 'admin@example.com', password: 'admin@example.com', password_confirmation: 'admin@example.com')
-# languages = [ "English", "Czech", "Russian"]
+languages = [ "English", "Czech", "Russian"]
 levels = [ "Beginner", "Intermediate","Advanced"]
 
 user = User.new(
