@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :enrolments
   resources :lessons
   devise_for :users
   resources :courses do

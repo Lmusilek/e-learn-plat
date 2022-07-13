@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable, :confirmable
          
   has_many :courses
+  has_many :enrolments
   
   extend FriendlyId
   friendly_id :email, use: :slugged

@@ -1,0 +1,39 @@
+- content_for :title do
+  ELearnPlat
+  \/ 
+  All Enrolments
+  
+%h3
+  .text-center
+    Users
+    .badge.bg-primary
+      = @enrolments.count
+
+.table-responsive
+  %table.table.table-bordered.table-striped.table-sm
+    %thead
+      %tr
+        %th Course
+        %th User
+        %th Rating
+        %th Review
+        %th Price
+        %th
+        %th
+        %th
+  
+    %tbody
+      - @enrolments.each do |enrolment|
+        %tr
+          %td= enrolment.course
+          %td= enrolment.user
+          %td= enrolment.rating
+          %td= enrolment.review
+          %td= number_to_currency(enrolment.price)
+          %td= link_to 'Show', enrolment
+          %td= link_to 'Edit', edit_enrolment_path(enrolment)
+          %td= link_to 'Destroy', enrolment, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Enrolment', new_enrolment_path
