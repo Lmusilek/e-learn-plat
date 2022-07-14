@@ -1,6 +1,7 @@
 class EnrolmentsController < ApplicationController
   before_action :set_enrolment, only: %i[ show edit update destroy ]
-
+  before_action :set_course, only: [:new, :create]
+  
   def index
     @enrolments = Enrolment.all
   end
@@ -16,17 +17,12 @@ class EnrolmentsController < ApplicationController
   end
 
   def create
-    @enrolment = Enrolment.new(enrolment_params)
-    @enrolment.price = @enrolment.course.price
-
-    respond_to do |format|
-      if @enrolment.save
-        format.html { redirect_to enrolment_url(@enrolment), notice: "Enrolment was successfully created." }
-        format.json { render :show, status: :created, location: @enrolment }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @enrolment.errors, status: :unprocessable_entity }
-      end
+    if @course.price > 0
+      flash[:alert] = "You can not access paid courses yet."
+      redirect_to new_course_enrolment_path(@course)
+    else
+      @enrolment = current_user.buy_course(@course)
+      redirect_to course_path(@course), notice: "You are enrolled!"
     end
   end
 
@@ -55,8 +51,12 @@ class EnrolmentsController < ApplicationController
     def set_enrolment
       @enrolment = Enrolment.find(params[:id])
     end
+    
+    def set_course
+      @course = Course.friendly.find(params[:course_id])
+    end
 
     def enrolment_params
-      params.require(:enrolment).permit(:course_id, :user_id, :rating, :review)
+      params.require(:enrolment).permit(:rating, :review)
     end
 end

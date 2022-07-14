@@ -34,3 +34,4 @@ user.save!
     user_id: User.first.id
   }])
 end
+
