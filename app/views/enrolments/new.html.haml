@@ -9,10 +9,10 @@
       .fa.fa-graduation-cap
       = link_to @course.title, course_path(@course)
       %hr
-     .fa.fa-lock-open
-     Buy Course
+      .fa.fa-lock-open
+      Buy Course
   .card-body
-      = form_tag course_enrolments_path(@course) do
+    = form_tag course_enrolments_path(@course) do
       = submit_tag "Pay #{@course.price}", class: 'btn btn-lg btn-success'
   .card-footer
     = link_to 'Back', course_path(@course)

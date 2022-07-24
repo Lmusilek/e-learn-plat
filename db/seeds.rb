@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 # PublicActivity.enabled = false
 
 Lesson.destroy_all
@@ -22,6 +23,14 @@ user = User.new(
 )
 user.skip_confirmation!
 user.save!
+
+user_student = User.new(
+  email: 'student@example.com', 
+  password: 'student@example.com', 
+  password_confirmation: 'student@example.com'
+)
+user_student.skip_confirmation!
+user_student.save!
 
 30.times do
   Course.create!([{
